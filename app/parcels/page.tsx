@@ -162,13 +162,25 @@ export default function ParcelsPage() {
 
                                             <div className="flex items-center justify-between md:justify-end gap-6 min-w-[200px]">
                                                 <div className="text-right">
-                                                    <p className="text-sm text-gray-500 mb-1">Total à payer</p>
-                                                    <p className="text-xl font-bold text-yeng-navy">
-                                                        ${parcel.totalAmount ? parcel.totalAmount.toFixed(2) : '0.00'}
-                                                    </p>
+                                                    {parcel.paymentStatus === 'PAID' ? (
+                                                        <>
+                                                            <p className="text-sm text-green-600 mb-1 font-semibold">✓ Payé</p>
+                                                            <p className="text-xl font-bold text-gray-400 line-through">
+                                                                ${parcel.totalAmount ? parcel.totalAmount.toFixed(2) : '0.00'}
+                                                            </p>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <p className="text-sm text-gray-500 mb-1">Total à payer</p>
+                                                            <p className="text-xl font-bold text-yeng-navy">
+                                                                ${parcel.totalAmount ? parcel.totalAmount.toFixed(2) : '0.00'}
+                                                            </p>
+                                                        </>
+                                                    )}
                                                 </div>
                                                 <ArrowRight className="w-5 h-5 text-gray-300 group-hover:text-yeng-red transition-colors" />
                                             </div>
+
                                         </div>
                                     </Link>
                                 );
