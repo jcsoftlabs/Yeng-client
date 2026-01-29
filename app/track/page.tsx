@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Search, Package, MapPin, Clock, CheckCircle, AlertCircle, Truck, Home } from 'lucide-react';
@@ -43,7 +43,7 @@ const statusIcons: Record<string, any> = {
     'CANCELLED': AlertCircle,
 };
 
-export default function TrackPage() {
+function TrackingContent() {
     const searchParams = useSearchParams();
     const [trackingNumber, setTrackingNumber] = useState(searchParams.get('tracking') || '');
     const [parcelData, setParcelData] = useState<ParcelData | null>(null);
@@ -258,5 +258,20 @@ export default function TrackPage() {
 
             <Footer />
         </div>
+    );
+}
+
+export default function TrackPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yeng-red mx-auto mb-4"></div>
+                    <p className="text-gray-600">Chargement...</p>
+                </div>
+            </div>
+        }>
+            <TrackingContent />
+        </Suspense>
     );
 }
