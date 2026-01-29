@@ -77,11 +77,17 @@ export default function RegisterPage() {
             });
 
             // Auto-login after registration
-            await api.login(formData.email, formData.password);
-
-            // Redirect to dashboard
-            router.push('/dashboard');
+            try {
+                await api.login(formData.email, formData.password);
+                router.push('/dashboard');
+            } catch (loginError) {
+                console.error('Auto-login failed:', loginError);
+                // If auto-login fails, redirect to login page
+                alert('Compte créé avec succès ! Veuillez vous connecter.');
+                router.push('/login');
+            }
         } catch (err: any) {
+            console.error('Registration error:', err);
             setError(err.message || 'Erreur lors de la création du compte');
             setLoading(false);
         }
