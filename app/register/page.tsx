@@ -63,6 +63,7 @@ export default function RegisterPage() {
         setLoading(true);
 
         try {
+            // Create account
             await api.register({
                 firstName: formData.firstName,
                 lastName: formData.lastName,
@@ -75,15 +76,17 @@ export default function RegisterPage() {
                 haitiDepartment: formData.haitiDepartment,
             });
 
-            // Show success and redirect to login
-            alert('Compte créé avec succès! Vous pouvez maintenant vous connecter.');
-            router.push('/login');
+            // Auto-login after registration
+            await api.login(formData.email, formData.password);
+
+            // Redirect to dashboard
+            router.push('/dashboard');
         } catch (err: any) {
             setError(err.message || 'Erreur lors de la création du compte');
-        } finally {
             setLoading(false);
         }
     };
+
 
     const copyAddress = () => {
         const fullAddress = `${generatedAddress}\n7829 NW 72nd Ave\nMiami, FL 33166\nUSA`;
