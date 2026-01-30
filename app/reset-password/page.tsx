@@ -42,7 +42,7 @@ function ResetPasswordForm() {
         setMessage('');
 
         try {
-            await api.post('/auth/reset-password', { token, password });
+            await api.resetPassword(token, password);
             setStatus('success');
         } catch (err: any) {
             setStatus('error');

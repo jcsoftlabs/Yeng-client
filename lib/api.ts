@@ -67,6 +67,20 @@ class ApiClient {
         return data;
     }
 
+    async forgotPassword(email: string) {
+        return this.request('/auth/forgot-password', {
+            method: 'POST',
+            body: JSON.stringify({ email }),
+        });
+    }
+
+    async resetPassword(token: string, password: string) {
+        return this.request('/auth/reset-password', {
+            method: 'POST',
+            body: JSON.stringify({ token, password }),
+        });
+    }
+
     // Public tracking
     async trackParcel(trackingNumber: string) {
         return this.request(`/parcels/track/${trackingNumber}`);
