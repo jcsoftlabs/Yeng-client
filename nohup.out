@@ -173,3 +173,8 @@
  GET /parcels 200 in 335ms (compile: 300ms, render: 35ms)
 ✓ Compiled in 1084ms
 ✓ Compiled in 409ms
+ GET /dashboard 200 in 463ms (compile: 117ms, render: 346ms)
+ GET /dashboard 200 in 489ms (compile: 395ms, render: 94ms)
+ GET /dashboard 200 in 581ms (compile: 543ms, render: 38ms)
+ GET /dashboard 200 in 503ms (compile: 435ms, render: 68ms)
+ GET /dashboard 200 in 474ms (compile: 338ms, render: 136ms)
