@@ -204,10 +204,14 @@ export default function DashboardPage() {
                                 </div>
 
                                 {customer?.fullUSAAddress ? (
-                                    <p className="whitespace-pre-line font-medium text-lg leading-relaxed">
-                                        {customer.fullUSAAddress}
-                                        {!customer.fullUSAAddress.includes('USA') && '\nUSA'}
-                                    </p>
+                                    <div className="font-medium text-lg leading-relaxed">
+                                        {customer.fullUSAAddress.split('\n').map((line, index) => (
+                                            <p key={index} className={index === 0 ? "underline decoration-2 underline-offset-4 mb-1" : ""}>
+                                                {line}
+                                            </p>
+                                        ))}
+                                        {!customer.fullUSAAddress.includes('USA') && <p>USA</p>}
+                                    </div>
                                 ) : (
                                     <>
                                         <p className="text-2xl font-bold mb-2">{customer?.customAddress}</p>
