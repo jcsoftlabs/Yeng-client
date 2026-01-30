@@ -14,7 +14,7 @@ interface TrackingEvent {
     status: string;
     location: string;
     description: string;
-    createdAt: string;
+    timestamp: string;
 }
 
 interface ParcelData {
@@ -171,7 +171,7 @@ function TrackingContent() {
                                     {parcelData.trackingEvents.map((event, index) => {
                                         const isFirst = index === 0;
                                         const isLast = index === parcelData.trackingEvents.length - 1;
-                                        const eventDate = new Date(event.createdAt);
+                                        const eventDate = new Date(event.timestamp);
 
                                         return (
                                             <div key={event.id} className="relative">
