@@ -143,7 +143,7 @@ function ResetPasswordForm() {
                     <span>Modification...</span>
                 ) : (
                     <>
-                        <checkCircle className="w-5 h-5" />
+                        <CheckCircle className="w-5 h-5" />
                         <span>Modifier le mot de passe</span>
                     </>
                 )}
