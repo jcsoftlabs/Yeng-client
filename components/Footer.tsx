@@ -60,7 +60,7 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
-                    <p>© 2026 Yeng Shipping. Tous droits réservés.</p>
+                    <p>© 2026 Yeng Shipping. Tous droits réservés. site web par Christopher JEROME</p>
                 </div>
             </div>
         </footer>
